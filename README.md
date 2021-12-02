@@ -13,23 +13,23 @@ Implemented features:
 
 To use the code:
 
-The file server.c must be compiled to the host(computer).
+- The file server.c must be compiled to the host(computer).
 
-The file client.c must be compiled to the Raspberry Pi.
+- The file client.c must be compiled to the Raspberry Pi.
 
-In the Makefile the ARCH and the CROSS_COMPILE must be changed according to the architecture used, and the KDIR must be changed according to the location of linux-custom and the host.
+- In the Makefile the ARCH and the CROSS_COMPILE must be changed according to the architecture used, and the KDIR must be changed according to the location of linux-custom and the host.
 
-Its needed to write "make" on the terminal, and this will create the file led.ko that must be sent to the Raspberry.
+- Its needed to write "make" on the terminal, and this will create the file led.ko that must be sent to the Raspberry.
 
-The executable for the client.c must be sent to the Raspberry.
+- The executable for the client.c must be sent to the Raspberry.
 
-To execute the server.c its needed to write: ./<name_of_the_executable> <port>
+- To execute the server.c its needed to write: ./<name_of_the_executable> <port>
 
-To execute the client.c its needed to write: ./<name_of_the_executable> <IP_adress> <port> . The port must be the same that the one used in the server.
+- To execute the client.c its needed to write: ./<name_of_the_executable> <IP_adress> <port> . The port must be the same that the one used in the server.
 
-When the client is in execution, it will ask for a name, this name must be writen and then pressed enter, and its ready to use. Every writen message will be sent to the server and it will broadcast it to all the clients.
+- When the client is in execution, it will ask for a name, this name must be writen and then pressed enter, and its ready to use. Every writen message will be sent to the server and it will broadcast it to all the clients.
 
-When a client is connected to the server, the led on the Raspberry Pi will be turned on and when it disconnect the led will be turned off.
+- When a client is connected to the server, the led on the Raspberry Pi will be turned on and when it disconnect the led will be turned off.
 
 
 
