@@ -1,15 +1,32 @@
 # BroadcastChat
 
-Implemented features:
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+
+
+## General-info
+This program implements a Broadcasting Chat Service using TCP/IP and it has the following features:
+
 - Each Client connect to the Server via TCP/IP.
 - The Server host more than 3 clients. 
-- Each Client connected to the Server SHALL be able to send to the Server a character string passed by argument via command line arguments.
+- Each Client connected to the Server is able to send to the Server a character string passed by argument via command line arguments.
 - The Server forward the received messages to all connected Clients.
 - The Server identify the client that has sent the message.
 - The Client switch his status from ONLINE to AFK if has not sent any new message for more than a minute.
-- Usage of POSIX threads and device drivers.
 
--------------------------------------------------------------------------------------------------------------------------------------------
+## Technologies
+This project uses:
+- TCP/IP
+- POSIX Threads
+- Device drivers
+
+To run this project, it is necessary:
+- a Raspberry Pi 4B
+- GCC (GNU Compiler, to compile the C files)
+
+## Setup
 
 To use the code:
 
