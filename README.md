@@ -23,29 +23,52 @@ This project uses:
 - Device drivers
 
 To run this project, it is necessary:
-- a Raspberry Pi 4B
+- a Raspberry PI 4B
+- Buildroot
 - GCC (GNU Compiler, to compile the C files)
 
 ## Setup
+**1. Open the MAKEFILE and make this changes:**
 
-To use the code:
+KDIR := <write_the_path_to_linux_custom_on_your_computer>
 
-- The file server.c must be compiled to the host(computer).
+ARCH ?= <write_the_architecture_of_the_Raspberry>  _eg: arm,arm64,aarch64_
 
-- The file client.c must be compiled to the Raspberry Pi.
+CROSS_COMPILE?= <write_the_path_to_gcc_for_the_architecture_of_the_Raspberry>
 
-- In the Makefile the ARCH and the CROSS_COMPILE must be changed according to the architecture used, and the KDIR must be changed according to the location of linux-custom and the host.
+**2. Compile the code by writing on the terminal the following commands:**
 
-- Its needed to write "make" on the terminal, and this will create the file led.ko that must be sent to the Raspberry.
+  `gcc server.c -o server.elf -pthread` _To compile the server to the host(your computer)_ 
 
-- The executable for the client.c must be sent to the Raspberry.
+  `<path_to_gcc_for_the_architecture_of_the_Raspberry> client.c -o client.elf -pthread` _To compile the client_ 
 
-- To execute the server.c its needed to write: ./<name_of_the_executable> <port>
+  `make` _This will generate the file led.ko, used for the device driver_
 
-- To execute the client.c its needed to write: ./<name_of_the_executable> <IP_adress> <port> . The port must be the same that the one used in the server.
+**3. Send the led.ko file and the client.c to the Raspberry PI, using this commands:**
 
-- When the client is in execution, it will ask for a name, this name must be writen and then pressed enter, and its ready to use. Every writen message will be sent to the server and it will broadcast it to all the clients.
+  `scp led.ko <write_the_IP_adress_of_the_Raspberry>:/etc`
+  
+  `scp client.elf <write_the_IP_adress_of_the_Raspberry>:/etc`
 
+**4. Execute the program**
+
+- In the host, write on a terminal:
+`./server.elf <write_the_port>`
+- In the Raspberry PI, write on a terminal:
+```
+cd /
+cd etc
+ls
+./client.elf <write_the_IP_adress_of_the_client> <write_the_port> 
+```
+**_Notes:_** 
+- The IP adress of the client must belong to the same netmask as the Raspberry PI
+- The port must be the same that the one used in the server.
+
+**5. During execution**
+
+- When the client is in execution, this message will be shown: `Write your name`, you must write your name and press enter.After this, you can write your messages and press enter and every writen message will be sent to the server.
+- The server will broadcast it to all the clients identifying the one who sended the message.
 - When a client is connected to the server, the led on the Raspberry Pi will be turned on and when it disconnect the led will be turned off.
 
 
