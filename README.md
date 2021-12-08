@@ -46,18 +46,28 @@ CROSS_COMPILE?= <write_the_path_to_gcc_for_the_architecture_of_the_Raspberry>
   `<path_to_gcc_for_the_architecture_of_the_Raspberry> client.c -o client.elf -pthread` _To compile the client_ 
 
   `make` _This will generate the file led.ko, used for the device driver_
-
-**3. Send the led.ko file and the client.c to the Raspberry PI, using this commands:**
-
-  `scp led.ko <write_the_IP_adress_of_the_Raspberry>:/etc`
   
-  `scp client.elf <write_the_IP_adress_of_the_Raspberry>:/etc`
+  **_Note:_** This step must be done with the terminal opened in the same directory as the downloaded code
+  
+**3.Open a new terminal and connect to the Raspberry PI, using this command:**
 
-**4. Execute the program**
+ `ssh root@<write_the_IP_adress_of_the_Raspberry>`
+
+**4.Send the led.ko file and the client.c to the Raspberry PI, using this commands:**
+
+  `scp led.ko root@<write_the_IP_adress_of_the_Raspberry>:/etc`
+  
+  `scp client.elf root@<write_the_IP_adress_of_the_Raspberry>:/etc`
+  
+   **_Note:_** This step must be done with the terminal opened in the same directory as the downloaded code
+
+**5. Execute the program**
 
 - In the host, write on a terminal:
 `./server.elf <write_the_port>`
-- In the Raspberry PI, write on a terminal:
+**_Note:_** This step must be done with the terminal opened in the same directory as the downloaded code
+
+- In the Raspberry PI, write on the terminal of step 3:
 ```
 cd /
 cd etc
@@ -68,7 +78,7 @@ ls
 - The IP adress of the client must belong to the same netmask as the Raspberry PI
 - The port must be the same that the one used in the server.
 
-**5. During execution**
+**6. During execution**
 
 - When the client is in execution, this message will be shown: `Write your name`, you must write your name and press enter.After this, you can write your messages and press enter and every writen message will be sent to the server.
 - The server will broadcast it to all the clients identifying the one who sended the message.
