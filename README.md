@@ -29,7 +29,7 @@ To run this project, it is necessary:
 
 ## Setup
 
-**ATTENTION: the program is developed in a way that the client must be Raspberry PI 4!!If it isnt some errors might appear**
+**ATTENTION: the program is developed in a way that the client must be Raspberry PI 4!!If it isnt some errors might occur**
 
 **1. Open the MAKEFILE and make this changes:**
 
