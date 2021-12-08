@@ -15,6 +15,7 @@ This program implements a Broadcasting Chat Service using TCP/IP and it has the 
 - The Server forward the received messages to all connected Clients.
 - The Server identify the client that has sent the message.
 - The Client switch his status from ONLINE to AFK if has not sent any new message for more than a minute.
+- Every time a Clients a led is turned on and when it disconnect the led is turned off.
 
 ## Technologies
 This project uses:
