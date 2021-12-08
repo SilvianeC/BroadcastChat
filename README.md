@@ -28,6 +28,9 @@ To run this project, it is necessary:
 - GCC (GNU Compiler, to compile the C files)
 
 ## Setup
+
+**ATTENTION: the program is developed in a way that the client must be Raspberry PI 4!!If it isnt some errors might appear**
+
 **1. Open the MAKEFILE and make this changes:**
 
 KDIR := <write_the_path_to_linux_custom_on_your_computer>
@@ -69,6 +72,7 @@ ls
 
 - When the client is in execution, this message will be shown: `Write your name`, you must write your name and press enter.After this, you can write your messages and press enter and every writen message will be sent to the server.
 - The server will broadcast it to all the clients identifying the one who sended the message.
+- The client can disconnect by writing "CLOSE".
 - When a client is connected to the server, the led on the Raspberry Pi will be turned on and when it disconnect the led will be turned off.
 
 
